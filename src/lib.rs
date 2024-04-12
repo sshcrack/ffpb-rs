@@ -149,9 +149,9 @@ pub fn ffmpeg(args: &[String]) -> Result<(), std::io::Error> {
                 if current >= pb.pb.total {
                     pb.pb.clear();
                     eprintln!("\r{}", std_line.replace("\r", "").trim_end_matches("\n"));
+                } else {
+                    pb.set_position(current);
                 }
-
-                pb.set_position(current);
             }
         } else {
             break;
